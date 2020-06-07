@@ -1,0 +1,25 @@
+.table-container {
+    border: 2px solid;
+  }
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .upload-container {
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: x-large;
+    min-height: 42px;
+  }
+  .upload-button-container {
+    background-color: gray;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-size: x-large;
+  }
