@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+// This is a class level component file upload component
 class FileUpload extends Component {
   delimeterInput = React.createRef();
   rowInput = React.createRef();
@@ -13,20 +14,24 @@ class FileUpload extends Component {
     updatedDataArray: [],
   };
 
+  // this method is to select the file from the system
+
   handleFile = (event) => {
     event.preventDefault();
     console.log(event.target.files + "test");
     console.log(event.target.files[0] + "test0");
     let file = event.target.files[0];
     this.setState({ file: file });
-    this.setState({ fileName: file.name });
   };
 
+  // setting the delimeter in the state from the delimeter input
   delimeterChange = (event) => {
     this.setState({ delimiter: this.delimeterInput.current.value });
     event.preventDefault();
   };
 
+  // Setting the row in the state from the lines input 
+  // and modifying the array on baisis of that input
   rowChange = (event) => {
     this.setState({
       updatedDataArray: this.state.fileData.toString().split("\n"),
@@ -43,6 +48,8 @@ class FileUpload extends Component {
     event.preventDefault();
   };
 
+  // On click of upload button passing all the data to axios and getting the response 
+  // and set all the response in the state for further use
   handleUpload = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -66,6 +73,7 @@ class FileUpload extends Component {
       });
   };
 
+  // displaying the table on basis of reponse
   getcontent = () => {
     const { updatedDataArray } = this.state;
     if (updatedDataArray.length > 0) {
@@ -75,6 +83,7 @@ class FileUpload extends Component {
     }
   };
 
+  // creating the layout of the output table
   renderTable = () => {
     return (
       <div>
@@ -105,6 +114,7 @@ class FileUpload extends Component {
     );
   }
 
+  //Passing the data to the table and creating the dynamic table 
   renderTableData = () => {
     const { updatedDataArray } = this.state;
     return updatedDataArray.map((data, index) => {
